@@ -8,7 +8,7 @@ A Cycle.js driver for History API.
 $ npm install @cycle/base
 $ npm install
 $ npm run watch
-``
+```
 
 ## Badges
 
