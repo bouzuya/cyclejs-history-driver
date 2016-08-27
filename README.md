@@ -2,6 +2,14 @@
 
 A Cycle.js driver for History API.
 
+## How to devleop
+
+```
+$ npm install @cycle/base
+$ npm install
+$ npm run watch
+``
+
 ## Badges
 
 [![Travis CI][travisci-badge-url]][travisci-url]
