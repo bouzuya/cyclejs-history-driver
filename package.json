@@ -45,7 +45,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "peerDependencies": {
-    "@cycle/base": "4.1.1"
+    "@cycle/base": "4.x"
   },
   "repository": {
     "type": "git",
