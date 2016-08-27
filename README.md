@@ -2,6 +2,13 @@
 
 A Cycle.js driver for History API.
 
+## Badges
+
+[![Travis CI][travisci-badge-url]][travisci-url]
+
+[travisci-badge-url]: https://travis-ci.org/bouzuya/cyclejs-history-driver.svg
+[travisci-url]: https://travis-ci.org/bouzuya/cyclejs-history-driver
+
 ## License
 
 [MIT](LICENSE)
