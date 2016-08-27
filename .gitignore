@@ -1,6 +1,4 @@
 *.log
 .envrc
 .tmp/
-lib/
 node_modules/
-public/index.css
