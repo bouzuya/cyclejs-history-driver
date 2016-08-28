@@ -12,10 +12,10 @@ $ npm run watch
 
 ## Badges
 
-[![Travis CI][travisci-badge-url]][travisci-url]
+[![Travis CI][travis-ci-badge]][travis-ci]
 
-[travisci-badge-url]: https://travis-ci.org/bouzuya/cyclejs-history-driver.svg
-[travisci-url]: https://travis-ci.org/bouzuya/cyclejs-history-driver
+[travis-ci-badge]: https://img.shields.io/travis/bouzuya/cyclejs-history-driver.svg
+[travis-ci]: https://travis-ci.org/bouzuya/cyclejs-history-driver
 
 ## License
 
