@@ -41,6 +41,9 @@
     "watch": "1.0.2",
     "xstream": "10.3.0"
   },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/bouzuya/cyclejs-history-driver",
   "keywords": [],
   "license": "MIT",
