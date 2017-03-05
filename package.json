@@ -1,5 +1,5 @@
 {
-  "name": "cyclejs-history-driver",
+  "name": "@bouzuya/cyclejs-history-driver",
   "description": "A client for blog.bouzuya.net using Cycle.js",
   "version": "0.1.2",
   "author": {
