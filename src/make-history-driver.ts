@@ -1,4 +1,4 @@
-import { DriverFunction, StreamAdapter } from '@cycle/base';
+import xs, { Stream } from 'xstream';
 import { window } from './globals';
 import { HistoryEvent } from './history-event';
 import { HistoryCommand } from './history-command';
@@ -21,13 +21,16 @@ const newHistory = (): History => {
   return window.history;
 };
 
-const makeHistoryDriver = (): DriverFunction => {
+const makeHistoryDriver = () => {
   const history: History = newHistory();
-  return (sink$: any, adapter: StreamAdapter): any => {
-    const { stream, observer } = adapter.makeSubject<HistoryEvent>();
-    const source$ = adapter.remember(stream.startWith(newEvent(void 0)));
-    const unlisten = listen((event) => observer.next(newEvent(event.state)));
-    adapter.streamSubscribe(sink$, {
+  return (sink$: Stream<HistoryCommand>): Stream<HistoryEvent> => {
+    const source$ = xs
+      .createWithMemory<HistoryEvent>()
+      .startWith(newEvent(void 0));
+    const unlisten = listen((event) => {
+      return source$.shamefullySendNext(newEvent(event.state));
+    });
+    const subscription = sink$.subscribe({
       next: (command: HistoryCommand) => {
         if (command.type === 'back') {
           history.back();
@@ -36,9 +39,15 @@ const makeHistoryDriver = (): DriverFunction => {
         } else if (command.type === 'go') {
           history.go(command.delta);
         } else if (command.type === 'push-state') {
-          history.pushState(command.data, command.title, command.url);
+          const title = typeof command.title === 'undefined'
+            ? ''
+            : command.title;
+          history.pushState(command.data, title, command.url);
         } else if (command.type === 'replace-state') {
-          history.replaceState(command.data, command.title, command.url);
+          const title = typeof command.title === 'undefined'
+            ? ''
+            : command.title;
+          history.replaceState(command.data, title, command.url);
         } else {
           throw new Error('Invalid HistoryCommand');
         }
@@ -46,7 +55,7 @@ const makeHistoryDriver = (): DriverFunction => {
       error: (error) => void console.error(error),
       complete: () => {
         unlisten();
-        observer.complete();
+        subscription.unsubscribe();
       }
     });
     return source$;

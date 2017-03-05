@@ -38,14 +38,15 @@
     "rimraf": "2.6.1",
     "sinon": "1.17.7",
     "typescript": "2.2.1",
-    "watch": "1.0.2"
+    "watch": "1.0.2",
+    "xstream": "10.3.0"
   },
   "homepage": "https://github.com/bouzuya/cyclejs-history-driver",
   "keywords": [],
   "license": "MIT",
   "main": "lib/index.js",
   "peerDependencies": {
-    "@cycle/base": "4.x"
+    "xstream": "*"
   },
   "repository": {
     "type": "git",
